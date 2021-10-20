@@ -1,0 +1,53 @@
+<header>
+    <h1>Probando el envio de datos Api REST</h1>
+</header>
+
+<form action="/" method="post">
+    <ul>
+        <li>
+            <label for="numero1">Numero1:</label>
+            <input type="text" id="numero1" name="numero1" />
+        </li>
+        <li>
+            <label for="numero2">Numero2:</label>
+            <input type="text" id="numero2" name="numero2" />
+        </li>
+
+        <li>
+            <button id="enviar_dato">Enviar</button>
+        </li>
+        <div id="resultado"></div>
+    </ul>
+</form>
+<div id="error">
+    </id>
+
+    <script>
+        var num1 = document.getElementById('numero1');
+        var num2 = document.getElementById('numero2');
+        var error = document.getElementById('error');
+        var resultado = document.getElementById('resultado');
+        var boton = document.getElementById('enviar_dato');
+        boton.addEventListener('click', function () {
+
+
+            import fetch from 'node-fetch';
+
+            const body = { numero1: 1,
+                            numero2 : 2};
+
+            const response = await fetch('https://localhost:3000/sumador', {
+                method: 'post',
+                body: JSON.stringify(body),
+                headers: { 'Content-Type': 'application/json' }
+            });
+            const data = await response.json();
+
+            console.log(data);
+        });
+
+    </script>
+
+    <footer>
+
+    </footer>
